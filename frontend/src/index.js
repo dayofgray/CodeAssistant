@@ -18,3 +18,7 @@ object = {
 fetch(`${BACKEND_URL}/languages`, object)
   .then(response => response.json())
   .then(parsedResponse => console.log(parsedResponse));
+
+function alertTest(){
+  alert("message")
+}
