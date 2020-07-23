@@ -1,4 +1,17 @@
-const BACKEND_URL = 'http://localhost:3000';
+const api = new ApiAdapter
+
+function getLanguages() {
+api.get('/languages')
+ .then( languages => {
+   const main = document.getElementsByTagName("main")[0]
+   languages.forEach(lang => {
+     const l = new Language(lang)
+     main.appendChild(l.renderCard())
+   })
+ })
+}
+
+getLanguages()
 
 /* fetch(`${BACKEND_URL}/languages/5`)
   .then(response => response.json())
@@ -17,8 +30,4 @@ const BACKEND_URL = 'http://localhost:3000';
  */
 /* fetch(`${BACKEND_URL}/languages`, object)
   .then(response => response.json())
-  .then(parsedResponse => console.log(parsedResponse)); */
-
-function alertTest(){
-  alert("message")
-}
+  .then(parsedResponse => console.log(parsedResponse)); *
