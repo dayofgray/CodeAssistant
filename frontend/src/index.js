@@ -23,9 +23,9 @@ function moveToNotes(e) {
   const lang_id = e.target.getAttribute("data-id")
   const main = document.getElementsByTagName("main")[0]
   main.innerHTML = null
-  api.get(`/notes/${lang_id}`)
-    .then(notes => {
-      notes.forEach(note => {
+  api.get(`/languages/${lang_id}`)
+    .then(language => {
+      language.notes.forEach(note => {
         const n = new Note(note)
         main.appendChild(n.renderCard())
       })
