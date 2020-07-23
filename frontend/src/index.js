@@ -3,7 +3,6 @@ const api = new ApiAdapter
 init()
 function init(){
   getLanguages()
-  addListeners()
 }
 
 function getLanguages() {
@@ -12,15 +11,12 @@ api.get('/languages')
    const main = document.getElementsByTagName("main")[0]
    languages.forEach(lang => {
      const l = new Language(lang)
-     main.appendChild(l.renderCard())
+     let div = l.renderCard()
+     div.addEventListener("click", moveToNotes)
+     main.appendChild(div)
    })
    main.appendChild(Language.renderAddLanguage())
  })
-}
-
-function addListeners() {
-  const cards = document.querySelectorAll(`[data-id]`)
-  cards.forEach(card => {card.addEventListener("click", moveToNotes)})
 }
 
 function moveToNotes(e) {
