@@ -34,6 +34,11 @@ body {
     text-align: center;
     align-items: center;
   }
+
+  div.card[data-create] {
+    display: flex;
+    align-items: center;
+  }
   
   p {
     font-size: 1.5em;
@@ -50,8 +55,14 @@ body {
   button {
     font-size: .65em;
     color: #fff;
-    background-color: green;
+    background-color: rgb(44, 108, 138);
     border-radius: 10px;
+  }
+
+  div.card button {
+    display: block;
+    font-size: 1em;
+    margin: 0 auto;
   }
   
   button.release {

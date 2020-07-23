@@ -23,7 +23,7 @@ class Note {
     static renderAddNote() {
         let div = document.createElement('div')
         div.setAttribute("class", "card")
-        div.setAttribute("data-id", "new")
+        div.setAttribute("data-create", "new")
         let button = document.createElement("button")
         button.innerHTML = "Create a Note"
         div.appendChild(button)
