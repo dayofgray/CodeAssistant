@@ -24,4 +24,20 @@ class ApiAdapter {
             console.log(json)
         })
     }
+
+    static delete(url, obj) {
+        const deleteObj = {
+            method: "delete",
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(obj)
+        }
+        return fetch(this.baseUrl + url, deleteObj)
+        .then(resp => resp.json())
+        .then((json) => {
+            console.log(json)
+        })
+    }
 }

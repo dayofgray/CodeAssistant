@@ -21,8 +21,12 @@ class Language {
         return div
     }
 
-    deleteLanguage() {
-        console.log("This language was deleted")
+    async deleteLanguage() {
+        const obj = {
+            language_id: this.id
+        }
+        const result = await ApiAdapter.delete(`/languages/${this.id}`, obj)
+        getLanguages()
     }
 
     static async submitLanguage(e) {

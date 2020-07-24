@@ -23,9 +23,12 @@ class Note {
         return div
     }
 
-    deleteNote() {
-        console.log("note deleted")
-        return false
+    async deleteNote() {
+        const obj = {
+            id: this.id
+        }
+        const result = await ApiAdapter.delete(`/notes/${this.id}`, obj)
+        moveToNotes(null, this.languageId)
     }
 
     static async submitNote(e) {

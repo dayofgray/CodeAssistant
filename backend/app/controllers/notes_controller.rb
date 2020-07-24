@@ -10,4 +10,13 @@ class NotesController < ApplicationController
 
     end
 
+    def destroy
+        note = Note.find_by(id: params[:id])
+        if note.destroy
+            render json: note
+        else
+            render json: {errors: note.errors.full_messages}
+        end
+    end
+
 end

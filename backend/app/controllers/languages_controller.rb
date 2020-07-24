@@ -13,8 +13,13 @@ class LanguagesController < ApplicationController
 
     end
 
-    def delete
-
+    def destroy
+        language = Language.find_by(id: params[:id])
+        if language.destroy
+            render json: language
+        else
+            render json: {errors: language.errors.full_messages}
+        end
     end
 
     def show

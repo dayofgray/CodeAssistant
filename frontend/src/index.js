@@ -20,7 +20,7 @@ ApiAdapter.get('/languages')
      title.addEventListener("click", moveToNotes)
      cardContainer.appendChild(div)
      let button = div.getElementsByTagName("button")[0]
-     button.addEventListener("click", l.deleteLanguage)
+     button.addEventListener("click", l.deleteLanguage.bind(l))
    })
    cardContainer.appendChild(Language.renderAddLanguage())
    const form = document.getElementById("create-language")
@@ -38,7 +38,7 @@ function moveToNotes(e, id) {
         let div = n.renderCard()
         cardContainer.appendChild(div)
         let button = div.getElementsByTagName("button")[0]
-        button.addEventListener("click", n.deleteNote)
+        button.addEventListener("click", n.deleteNote.bind(n))
       })
       cardContainer.appendChild(Note.renderAddNote(lang_id))
       const form = document.getElementById("create-note")
