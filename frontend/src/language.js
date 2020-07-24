@@ -15,7 +15,14 @@ class Language {
         p2.innerHTML = `Proficiency: ${this.proficiency}`
         div.appendChild(p1)
         div.appendChild(p2)
+        let button = document.createElement("button")
+        button.innerText = "Delete"
+        div.append(button)
         return div
+    }
+
+    deleteLanguage() {
+        console.log("This language was deleted")
     }
 
     static async submitLanguage(e) {

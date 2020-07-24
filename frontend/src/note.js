@@ -17,7 +17,15 @@ class Note {
         p2.innerHTML = this.content
         div.appendChild(p1)
         div.appendChild(p2)
+        let button = document.createElement("button")
+        button.innerText = "Delete"
+        div.append(button)
         return div
+    }
+
+    deleteNote() {
+        console.log("note deleted")
+        return false
     }
 
     static async submitNote(e) {

@@ -16,8 +16,11 @@ ApiAdapter.get('/languages')
    languages.forEach(lang => {
      const l = new Language(lang)
      let div = l.renderCard()
-     div.addEventListener("click", moveToNotes)
+     let title = div.getElementsByTagName("p")[0]
+     title.addEventListener("click", moveToNotes)
      cardContainer.appendChild(div)
+     let button = div.getElementsByTagName("button")[0]
+     button.addEventListener("click", l.deleteLanguage)
    })
    cardContainer.appendChild(Language.renderAddLanguage())
    const form = document.getElementById("create-language")
@@ -26,22 +29,23 @@ ApiAdapter.get('/languages')
  }
 
 function moveToNotes(e, id) {
-  const lang_id = id ? id : e.target.getAttribute("data-id")
+  const lang_id = id ? id : e.target.parentNode.getAttribute("data-id")
   cardContainer.innerHTML = null
-  const p = document.createElement("p")
-  const a = document.createElement("a")
-  a.href = "index.html"
-  cardContainer.appendChild(a)
   ApiAdapter.get(`/languages/${lang_id}`)
     .then(language => {
       language.notes.forEach(note => {
         const n = new Note(note)
-        cardContainer.appendChild(n.renderCard())
+        let div = n.renderCard()
+        cardContainer.appendChild(div)
+        let button = div.getElementsByTagName("button")[0]
+        button.addEventListener("click", n.deleteNote)
       })
       cardContainer.appendChild(Note.renderAddNote(lang_id))
       const form = document.getElementById("create-note")
       form.addEventListener("submit", Note.submitNote)
     })
     const back = document.getElementById("back")
-    back.toggleAttribute("hidden")
+    if (back.hidden) {
+      back.toggleAttribute("hidden")
+    }
 }
