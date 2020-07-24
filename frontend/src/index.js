@@ -21,8 +21,10 @@ ApiAdapter.get('/languages')
    })
  }
 
-function moveToNotes(e) {
-  const lang_id = e.target.getAttribute("data-id")
+function moveToNotes(e, id) {
+  console.log(e)
+  console.log(e)
+  const lang_id = id ? id : e.target.getAttribute("data-id")
   const main = document.getElementsByTagName("main")[0]
   main.innerHTML = null
   ApiAdapter.get(`/languages/${lang_id}`)
@@ -31,6 +33,8 @@ function moveToNotes(e) {
         const n = new Note(note)
         main.appendChild(n.renderCard())
       })
-      main.appendChild(Note.renderAddNote())
+      main.appendChild(Note.renderAddNote(lang_id))
+      const form = document.getElementById("create-note")
+      form.addEventListener("submit", Note.submitNote)
     })
 }
