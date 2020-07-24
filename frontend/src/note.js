@@ -24,9 +24,16 @@ class Note {
         let div = document.createElement('div')
         div.setAttribute("class", "card")
         div.setAttribute("data-create", "new")
-        let button = document.createElement("button")
-        button.innerHTML = "Create a Note"
-        div.appendChild(button)
+        div.innerHTML = `<div class="inner-card">
+                         <h3 class="card-title">Create a Note</h3>
+                         <form>
+                            <label for="topic">Topic:</label><br>
+                            <input type="text" id="topic" name="topic"><br>
+                            <label for="content">Note:</label><br>
+                            <textarea id="content" name="content" form="createnoteform" placeholder="Enter notes here..."></textarea> <br> <br>
+                            <input type="submit">    
+                         </form>
+                         </div>`
         return div
     }
 }

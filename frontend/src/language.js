@@ -22,9 +22,16 @@ class Language {
         let div = document.createElement('div')
         div.setAttribute("class", "card")
         div.setAttribute("data-create", "new")
-        let button = document.createElement("button")
-        button.innerHTML = "Create a Language"
-        div.appendChild(button)
+        div.innerHTML = `<div class="inner-card">
+                         <h3 class="card-title">Create a Language</h3>
+                         <form>
+                            <label for="title">Language Name:</label><br>
+                            <input type="text" id="title" name="title"><br>
+                            <label for="proficiency">Proficiency:</label><br>
+                            <input type="text" id="proficiency" name="proficiency" placeholder="Beginner, Moderate, Advanced"> <br> <br>
+                            <input type="submit">    
+                         </form>
+                         </div>`
         return div
     }
 }
