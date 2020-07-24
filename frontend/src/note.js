@@ -20,6 +20,10 @@ class Note {
         return div
     }
 
+    static submitNote() {
+        return false
+    }
+
     static renderAddNote() {
         let div = document.createElement('div')
         div.setAttribute("class", "card")
