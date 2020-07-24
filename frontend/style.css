@@ -15,7 +15,7 @@ body {
     text-align: center;
   }
   
-  main {
+  main div.card-container {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
@@ -73,15 +73,22 @@ body {
   div.inner-card {
     margin: 0 auto;
   }
+
+  .back {
+    text-decoration: none;
+    float: left;
+    color: black;
+  }
+
   
   @media only screen and (min-width: 500px) {
-    main {
+    main div.card-container {
       grid-template-columns: 1fr 1fr;
     }
   }
   
   @media only screen and (min-width: 850px) {
-    main {
+    main div.card-container {
       grid-template-columns: 1fr 1fr 1fr 1fr;
     }
   }
